@@ -1,0 +1,15 @@
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+

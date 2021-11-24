@@ -1,9 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const cors = require("cors");
 
-const Post = require("./models/post");
+const postsRoutes = require("./routes/posts");
+
 const app = express();
 
 mongoose
@@ -17,7 +17,7 @@ mongoose
     console.log("Connection failed!");
   });
 
-app.options("/api/posts/:id", cors());
+
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
@@ -38,35 +38,6 @@ app.use((request, response, next) => {
   next();
 });
 
-app.post("/api/posts", (request, response, next) => {
-  const post = new Post({
-    title: request.body.title,
-    content: request.body.content,
-  });
-  post.save().then((result) => {
-    response.status(201).json({
-      message: "Post added successfully!",
-      postId: result._id,
-    });
-  });
-});
-
-app.get("/api/posts", (request, response, next) => {
-  Post.find().then((documents) => {
-    response.status(200).json({
-      message: "Posts fetched successfully!",
-      posts: documents,
-    });
-  });
-});
-
-app.delete("/api/posts/:id", cors(), (request, response, next) => {
-  Post.deleteOne({ _id: request.params.id }).then((result) => {
-    console.log(result);
-    response.status(200).json({
-      message: "Post deleted successfully!",
-    });
-  });
-});
+app.use("/api/posts", postsRoutes);
 
 module.exports = app;

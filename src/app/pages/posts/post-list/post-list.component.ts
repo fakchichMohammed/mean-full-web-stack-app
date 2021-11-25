@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Post } from 'src/app/models/post.model';
-import { PostService } from 'src/app/apis/services/post.service';
+import { PostsService } from 'src/app/apis/services/posts.service';
 
 @Component({
   selector: 'app-post-list',
@@ -11,23 +11,27 @@ import { PostService } from 'src/app/apis/services/post.service';
 export class PostListComponent implements OnInit, OnDestroy {
 
   posts: Post[] = [];
-  private postSub: Subscription;
+  private postsSub: Subscription;
+  isLoading = false;
 
-  constructor(public postService: PostService) { }
+  constructor(public postsService: PostsService) { }
 
   ngOnInit(): void {
-    this.postService.getPosts();
-    this.postSub = this.postService.getPostUpdateObservable().subscribe((posts: Post[]) => {
-      this.posts = posts;
-    });
+    this.isLoading = true;
+    this.postsService.getPosts();
+    this.postsSub = this.postsService.getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.isLoading = false;
+        this.posts = posts;
+      });
   }
 
   ngOnDestroy() {
-    this.postSub.unsubscribe();
+    this.postsSub.unsubscribe();
   }
 
   onDelete(postId: string) {    
-    this.postService.deletePost(postId);
+    this.postsService.deletePost(postId);
   }
 
 }

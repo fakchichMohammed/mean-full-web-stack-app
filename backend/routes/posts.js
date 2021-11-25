@@ -2,8 +2,21 @@ const express = require("express");
 const Post = require("../models/post");
 const cors = require("cors");
 const router = express.Router();
+const multer = require('multer');
+const MIME_TYPE_MAP
+
+const storage = multer.diskStorage({
+  destination: (request, file, callback) => {
+    callback(null, "backend/images");
+  },
+  filename: (request, file, callback) => {
+    const name = file.originalname.toLowerCase().split(' ').join('-');
+  }
+});
 
 router.options("/api/posts/:id", cors());
+
+
 
 router.post("", (req, res, next) => {
   const post = new Post({

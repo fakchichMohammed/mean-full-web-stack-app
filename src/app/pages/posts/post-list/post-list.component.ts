@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Post } from 'src/app/models/post.model';
-import { PostsService } from 'src/app/apis/services/posts.service';
+import { PostsService } from 'src/app/apis/services/posts/posts.service';
 import { PageEvent } from '@angular/material/paginator';
 
 @Component({

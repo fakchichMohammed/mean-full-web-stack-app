@@ -12,11 +12,14 @@ import { MatButtonModule} from '@angular/material/button'
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppComponent } from './app.component';
 import { PostCreateComponent } from './pages/posts/post-create/post-create.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { PostListComponent } from './pages/posts/post-list/post-list.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 
 
@@ -25,7 +28,9 @@ import { PostListComponent } from './pages/posts/post-list/post-list.component';
     AppComponent,
     PostCreateComponent,
     HeaderComponent,
-    PostListComponent
+    PostListComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,8 @@ import { PostListComponent } from './pages/posts/post-list/post-list.component';
     MatExpansionModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

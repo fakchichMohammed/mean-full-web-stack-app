@@ -10,11 +10,9 @@ const Post = require("./models/post");
 app.options("/api/posts/:id", cors());
 
 const postsRoutes = require("./routes/posts");
+const userRoutes = require("./routes/user");
 
-mongoose
-  .connect(
-    "mongodb+srv://mohammed:Mongodb.com92@cluster0.rlck1.mongodb.net/node-angular?retryWrites=true&w=majority"
-  )
+mongoose.connect("mongodb+srv://mohammed:Mongodb.com92@cluster0.rlck1.mongodb.net/node-angular?retryWrites=true&w=majority")
   .then(() => {
     console.log("Connected to database!");
   })
@@ -40,5 +38,6 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/posts", postsRoutes);
+app.use("/api/user", userRoutes);
 
 module.exports = app;

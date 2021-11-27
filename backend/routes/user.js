@@ -39,7 +39,7 @@ router.post("/login", (req, res, next) => {
       });
       const token = jwt.sign(
           { email: fetchedUser.email, userId: fetchedUser._id },
-          "secret_this-should_be_longer_more_longer_more_secure_will_be_our_token",
+          "secret_this-should_be_longer_more_longer_more_secure_will_be_our_token_just_like_this",
           { expiresIn: "1h" }
       );
       res.status(200).json({

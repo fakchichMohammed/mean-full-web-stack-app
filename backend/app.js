@@ -5,19 +5,21 @@ const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
 
-
 const Post = require("./models/post");
 app.options("/api/posts/:id", cors());
 
 const postsRoutes = require("./routes/posts");
 const userRoutes = require("./routes/user");
 
-mongoose.connect("mongodb+srv://mohammed:Mongodb.com92@cluster0.rlck1.mongodb.net/node-angular?retryWrites=true&w=majority")
+mongoose
+  .connect(
+    "mongodb+srv://mohammed:Mongodb.com92@cluster0.rlck1.mongodb.net/node-angular"
+  )
   .then(() => {
     console.log("Connected to database!");
   })
-  .catch(() => {
-    console.log("Connection failed!");
+  .catch(error => {
+    console.log(error);
   });
 
 app.use(bodyParser.json());

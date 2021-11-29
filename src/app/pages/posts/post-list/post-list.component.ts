@@ -25,7 +25,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   constructor(
     public postsService: PostsService,
     private authService: AuthService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.isLoading = true;

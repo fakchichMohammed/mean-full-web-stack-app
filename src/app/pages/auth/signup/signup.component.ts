@@ -6,19 +6,20 @@ import { AuthService } from 'src/app/apis/services/auth/auth.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit, OnDestroy {
-
-  isLoading =  false;
+  isLoading = false;
   private authStatusSubs: Subscription;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.authStatusSubs = this.authService.getAuthStatusListener().subscribe( authStatus => {
-      this.isLoading = false;
-    });
+    this.authStatusSubs = this.authService
+      .getAuthStatusListener()
+      .subscribe((authStatus) => {
+        this.isLoading = false;
+      });
   }
 
   onSignup(form: NgForm) {
@@ -32,5 +33,4 @@ export class SignupComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.authStatusSubs.unsubscribe();
   }
-
 }

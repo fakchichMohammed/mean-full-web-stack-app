@@ -7,22 +7,22 @@ const User = require("../models/user");
 const router = express.Router();
 
 router.post("/signup", (req, res, next) => {
-  bcrypt.hash(req.body.password, 10).then(hash => {
+  bcrypt.hash(req.body.password, 10).then((hash) => {
     const user = new User({
       email: req.body.email,
-      password: hash
+      password: hash,
     });
     user
       .save()
-      .then(result => {
+      .then((result) => {
         res.status(201).json({
           message: "User created!",
-          result: result
+          result: result,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         res.status(500).json({
-          message: "Invalid authentication credentials!"
+          message: "Invalid authentication credentials!",
         });
       });
   });
@@ -31,19 +31,19 @@ router.post("/signup", (req, res, next) => {
 router.post("/login", (req, res, next) => {
   let fetchedUser;
   User.findOne({ email: req.body.email })
-    .then(user => {
+    .then((user) => {
       if (!user) {
         return res.status(401).json({
-          message: "Auth failed"
+          message: "Auth failed",
         });
       }
       fetchedUser = user;
       return bcrypt.compare(req.body.password, user.password);
     })
-    .then(result => {
+    .then((result) => {
       if (!result) {
         return res.status(401).json({
-          message: "Auth failed"
+          message: "Auth failed",
         });
       }
       const token = jwt.sign(
@@ -54,12 +54,12 @@ router.post("/login", (req, res, next) => {
       res.status(200).json({
         token: token,
         expiresIn: 3600,
-        userId: fetchedUser._id
+        userId: fetchedUser._id,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       return res.status(401).json({
-        message: "Invalid authentication credentials!"
+        message: "Invalid authentication credentials!",
       });
     });
 });

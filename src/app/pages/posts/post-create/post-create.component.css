@@ -4,7 +4,7 @@ textarea {
 }
 
 button {
-  margin:10px 0 10px;
+  margin: 10px 0 10px;
 }
 
 mat-spinner {
@@ -20,8 +20,6 @@ input[type="file"] {
   margin: 1rem 0;
 }
 
-.image-preview  img{
+.image-preview img {
   height: 100%;
 }
-
-

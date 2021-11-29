@@ -14,7 +14,7 @@ export class AuthService {
   private userId: string;
   private authStatusListener = new Subject<boolean>();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   getToken() {
     return this.token;

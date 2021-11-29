@@ -7,11 +7,11 @@ import { PostCreateComponent } from "./pages/posts/post-create/post-create.compo
 import { PostListComponent } from "./pages/posts/post-list/post-list.component";
 
 const routes: Routes = [
-    {path: '', component: PostListComponent},
-    {path: 'create', component: PostCreateComponent, canActivate: [AuthGuard]},
-    {path: 'edit/:postId', component: PostCreateComponent, canActivate: [AuthGuard]},
-    {path: 'login', component: LoginComponent},
-    {path: 'signup', component: SignupComponent},
+    { path: '', component: PostListComponent },
+    { path: 'create', component: PostCreateComponent, canActivate: [AuthGuard] },
+    { path: 'edit/:postId', component: PostCreateComponent, canActivate: [AuthGuard] },
+    { path: 'login', component: LoginComponent },
+    { path: 'signup', component: SignupComponent },
 ];
 
 @NgModule({

@@ -66,4 +66,4 @@ import { ErrorComponent } from './pages/error/error.component';
   bootstrap: [AppComponent],
   entryComponents: [ErrorComponent]
 })
-export class AppModule {}
+export class AppModule { }

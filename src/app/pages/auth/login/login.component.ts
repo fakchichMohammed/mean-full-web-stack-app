@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   isLoading = false;
   private authStatusSubs: Subscription;
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
     this.authStatusSubs = this.authService.getAuthStatusListener().subscribe(
